@@ -1,35 +1,7 @@
 import http from 'http';
 import URL from 'url';
 import ClientOptions from './typings/ClientOptions';
-
-const createRequest = (options: any) =>
-  new Promise((resolve, reject) => {
-    const url = URL.parse(options.url);
-
-    options = {
-      ...options,
-      hostname: url.host,
-      path: url.path,
-      port: url.port
-    };
-
-    const req = http.request(options, (result) => {
-      let body: string = '';
-      result.setEncoding('utf8');
-      result.on('data', (chunk) => {
-        body += chunk;
-      });
-      result.on('end', () => {
-        resolve(body);
-      });
-    });
-
-    req.on('error', (err) => {
-      reject(err);
-    });
-
-    req.end();
-  });
+import { createRequest } from './http';
 
 const methods: any = {
   get: async (url: string) => {
@@ -39,8 +11,6 @@ const methods: any = {
 };
 
 export default class Client {
-  request: http.ClientRequest;
-
   constructor(
     // private options: ClientOptions
   ) {
