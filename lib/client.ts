@@ -1,5 +1,3 @@
-import http from 'http';
-import URL from 'url';
 import ClientOptions from './typings/ClientOptions';
 import { createRequest } from './http';
 
