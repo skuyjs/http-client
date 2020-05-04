@@ -9,7 +9,7 @@ Examples of sending an HTTP request with a different request method.
 const Client = require('@skuyjs/http-client');
 
 Client
-  .get('http://jsonplaceholder.typicode.com/posts/1')
+  .get('https://jsonplaceholder.typicode.com/posts/1')
   .then(result => {
     console.log(result);
   })
