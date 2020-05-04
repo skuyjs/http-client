@@ -3,7 +3,7 @@ import URL from 'url';
 import ClientOptions from './typings/ClientOptions';
 
 const createRequest = (options: any) =>
-  new Promise((_, reject) => {
+  new Promise((resolve, reject) => {
     const url = URL.parse(options.url);
 
     options = {
@@ -20,7 +20,7 @@ const createRequest = (options: any) =>
         body += chunk;
       });
       result.on('end', () => {
-        console.log(body);
+        resolve(body);
       });
     });
 
